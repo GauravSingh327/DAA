@@ -5,8 +5,8 @@ static int swaps = 0;
 void merge(int arr[],int start,int mid,int end)
 {
 	int s=(end-start)+1;
-	int A[s];
-	int n1=mid-start+1;
+	int * A = new int[s];
+	int ni=((start+end)/2)+1;
 	int i=start;
 	int j=mid+1;
 	int k=0;
@@ -21,7 +21,7 @@ void merge(int arr[],int start,int mid,int end)
 		}
 		else
 		{
-			swaps++;
+			swaps+=(ni-i);
 			comparisions++;
 			A[k]=arr[j];
 			j++;
@@ -36,7 +36,6 @@ void merge(int arr[],int start,int mid,int end)
 	}
 	while(j<=end)
 	{
-		swaps++;
 		A[k]=arr[j];
 		j++;
 		k++;
@@ -45,6 +44,7 @@ void merge(int arr[],int start,int mid,int end)
 	{
 		arr[i]=A[k];
 	}
+	delete A;
 }
 void mergesort(int arr[],int start,int end)
 {
